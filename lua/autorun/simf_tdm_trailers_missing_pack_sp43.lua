@@ -156,9 +156,9 @@ local DKCAR = {
 	        	ent:SetTrailerCenterposition(Vector(0,216.2,37)) -- position of center ballsocket for trailer hook 33
 				ent:SetCenterposition(Vector(0,-96.5,21.2)) -- position of center ballsocket for tow hitch(trailer coupling)
 				
-				ent:SetLightsEnabled(true)
+				--[[ent:SetLightsEnabled(true)
 				ent:SetFogLightsEnabled(true)
-				ent:SetEMSEnabled(true)
+				ent:SetEMSEnabled(true)]]
 	        else
         		print("This trailer support trailers BASE, but you don't installed it")
         	end
