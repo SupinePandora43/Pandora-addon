@@ -714,7 +714,7 @@ local DKCAR = {
         FrontWheelRadius = 21,--радиус переднего колеса
         RearWheelRadius = 21,--радиус заднего колеса
  
-        CustomMassCenter = Vector(0,-40,23.3),
+        CustomMassCenter = Vector(0,20,23.3),
  
 		SeatOffset = Vector(226.4,-32.1,30), -- положение водительского сидения
         SeatPitch = 0,

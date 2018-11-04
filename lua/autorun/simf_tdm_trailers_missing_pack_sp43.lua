@@ -74,9 +74,6 @@ if file.Exists("autorun/simftrailers_shared.lua", "LUA") then
 	end)
 end
 
-
-
-
 --Reefer 3000R -not long
 local light_table = {
 	ModernLights = true,
@@ -87,57 +84,54 @@ local light_table = {
 	R_RearLampPos = Vector(96,23.6,3.3), -- расположение задних фар
     R_RearLampAng = Angle(0,0,0), -- угол поворота фар
     FogLight_sprites = {
-        {pos = Vector( -48, 294.62, 142.06 -0.4 ),size = 5,color=Color(255,120,0,255),material="sprites/light_ignorez"},
-        {pos = Vector( -48, 182.81, 137.15 -0.3 ),size = 5,color=Color(255,120,0,255),material="sprites/light_ignorez"},
-        {pos = Vector( -48, 75.34, 132.21),size = 5,color=Color(255,120,0,255),material="sprites/light_ignorez"},
-        {pos = Vector( -48, -31.94, 128.03 -0.1 ),size = 5,color=Color(255,120,0,255),material="sprites/light_ignorez"},
-        {pos = Vector( -48, -138.79, 123.96 -0.2 ),size = 5,color=Color(255,120,0,255),material="sprites/light_ignorez"},
-        {pos = Vector( -48, -260.47, 118.93 ),size = 5,color=Color(255,120,0,255),material="sprites/light_ignorez"},
+		{pos = Vector( -51, 238.4, 52.46 ),size = 25,color = Color(255,134,74,255)},
+		{pos = Vector( -51, 143.93, 52.46 ),size = 25,color = Color(255,134,74,255)},
+		{pos = Vector( -51, 1.84, 52.46 ),size = 25,color = Color(255,134,74,255)},
+		{pos = Vector( -50.5, 1, 47 ),size = 25,color = Color(255,134,74,255)},
+		{pos = Vector( -51, -137.57, 52.46 ),size = 25,color = Color(255,134,74,255)},
+		{pos = Vector( -51, -251.19, 52.46 ),size = 25,color = Color(255,134,74,255)},
 
-        {pos = Vector( -47, -38.54 -0.6, 32 -0.25 ),size = 5,color=Color(255,120,0,255),material="sprites/light_ignorez"},
-        {pos = Vector( -47, -128.94, 31.6 ),size = 5,color=Color(255,120,0,255),material="sprites/light_ignorez"},
-        {pos = Vector( -45, -218.2, 26.5 ),size = 5,color=Color(255,120,0,255),material="sprites/light_ignorez"},
+		{pos = Vector(-45.233,-313.704 +51 ,157.484),size = 25,color = Color(255,134,74,255)},
+		{pos = Vector(45.233, -313.704 +51 ,157.484),size = 25,color = Color(255,134,74,255)},
+		{pos = Vector(-13.46, -313.704 +51 ,157.484),size = 25,color = Color(255,134,74,255)},
+		{pos = Vector(13.46,  -313.704 +51 ,157.484),size = 25,color = Color(255,134,74,255)},
+		{pos = Vector(0,      -313.704 +51 ,157.484),size = 25,color = Color(255,134,74,255)},
+		{pos = Vector(-50.728,-302.523 +52,157.336),size = 25,color = Color(255,134,74,255)},
+		{pos = Vector( 50.728,-302.523 +52,157.336),size = 25,color = Color(255,134,74,255)},
 
+		{pos = Vector( -51, 238.56, 157.03 ),size = 25,color = Color(255,134,74,255)},
+		{pos = Vector( -51, 144.31, 157.03 ),size = 25,color = Color(255,134,74,255)},
+		{pos = Vector( -51, 2.25, 157.03 ),size = 25,color = Color(255,134,74,255)},
+		{pos = Vector( -51, -137.54, 157.03 ),size = 25,color = Color(255,134,74,255)},
 
-        {pos = Vector( 48, 294.62, 142.06 -0.4 ),size = 5,color=Color(255,120,0,255),material="sprites/light_ignorez"},
-        {pos = Vector( 48, 182.81, 137.15 -0.3 ),size = 5,color=Color(255,120,0,255),material="sprites/light_ignorez"},
-        {pos = Vector( 48, 75.34, 132.21),size = 5,color=Color(255,120,0,255),material="sprites/light_ignorez"},
-        {pos = Vector( 48, -31.94, 128.03 -0.1 ),size = 5,color=Color(255,120,0,255),material="sprites/light_ignorez"},
-        {pos = Vector( 48, -138.79, 123.96 -0.2 ),size = 5,color=Color(255,120,0,255),material="sprites/light_ignorez"},
-        {pos = Vector( 48, -260.47, 118.93 ),size = 5,color=Color(255,120,0,255),material="sprites/light_ignorez"},
+		{pos = Vector( 51, 238.56, 157.03 ),size = 25,color = Color(255,134,74,255)},
+		{pos = Vector( 51, 144.31, 157.03 ),size = 25,color = Color(255,134,74,255)},
+		{pos = Vector( 51, 2.25, 157.03 ),size = 25,color = Color(255,134,74,255)},
+		{pos = Vector( 51, -137.54, 157.03 ),size = 25,color = Color(255,134,74,255)},
 
-        {pos = Vector(47, -38.54 -0.6, 32 -0.25 ),size = 5,color=Color(255,120,0,255),material="sprites/light_ignorez"},
-        {pos = Vector(47, -128.94, 31.6 ),size = 5,color=Color(255,120,0,255),material="sprites/light_ignorez"},
-        {pos = Vector(45, -218.2, 26.5 ),size = 5,color=Color(255,120,0,255),material="sprites/light_ignorez"},
+		{pos = Vector( 51, 238.4, 52.46 ),size = 25,color = Color(255,134,74,255)},
+		{pos = Vector( 51, 143.93, 52.46 ),size = 25,color = Color(255,134,74,255)},
+		{pos = Vector( 51, 1.84, 52.46 ),size = 25,color = Color(255,134,74,255)},
+		{pos = Vector( 50.5, 1, 47 ),size = 25,color = Color(255,134,74,255)},
+		{pos = Vector( 51, -137.57, 52.46 ),size = 25,color = Color(255,134,74,255)},
+		{pos = Vector( 51, -251.19, 52.46 ),size = 25,color = Color(255,134,74,255)},
 	},
-    Rearlight_sprites = { -- задние фары
-        Vector( -36, -277.6, 26.5 ),
-        Vector( 36,  -277.6, 26.5 ),
-
-        {pos = Vector( -43, -272.5, 34 -1 ),size = 15,color=Color(255,120,0,100),material="sprites/light_ignorez"},
-        {pos = Vector( -43, -272.5, 37 -1 ),size = 15,color=Color(255,120,0,100),material="sprites/light_ignorez"},
-        {pos = Vector( -43, -272.5, 40 -1 ),size = 15,color=Color(255,120,0,100),material="sprites/light_ignorez"},
-        {pos = Vector( -43, -272.5, 43 -1 ),size = 15,color=Color(255,120,0,100),material="sprites/light_ignorez"},
-        {pos = Vector( -43, -272.5, 46 -1 ),size = 15,color=Color(255,120,0,100),material="sprites/light_ignorez"},
-        {pos = Vector( -43, -272.5, 49 -1 ),size = 15,color=Color(255,120,0,100),material="sprites/light_ignorez"},
-
-        {pos = Vector( 43, -272.5, 34 -1 ),size = 15,color=Color(255,120,0,100),material="sprites/light_ignorez"},
-        {pos = Vector( 43, -272.5, 37 -1 ),size = 15,color=Color(255,120,0,100),material="sprites/light_ignorez"},
-        {pos = Vector( 43, -272.5, 40 -1 ),size = 15,color=Color(255,120,0,100),material="sprites/light_ignorez"},
-        {pos = Vector( 43, -272.5, 43 -1 ),size = 15,color=Color(255,120,0,100),material="sprites/light_ignorez"},
-        {pos = Vector( 43, -272.5, 46 -1 ),size = 15,color=Color(255,120,0,100),material="sprites/light_ignorez"},
-        {pos = Vector( 43, -272.5, 49 -1 ),size = 15,color=Color(255,120,0,100),material="sprites/light_ignorez"},
+	Rearlight_sprites = { -- задние фары
+		{pos = Vector( 39.829,-313.244 +49.7,48.38),size = 30},
+		{pos = Vector( 32.891,-313.244 +49.7,48.38),size = 30},
+		{pos = Vector(-39.829,-313.244 +49.7,48.38),size = 30},
+		{pos = Vector(-32.891,-313.244 +49.7,48.38),size = 30},
 	},
 	ems_sprites = { -- тормозные огни
-        {pos = Vector( -42.38,-273 -4, 26.71 ),size = 25,Colors = {Color(255,0,0,255),Color(255,0,0,255)},Speed = 0.04,},
-        {pos = Vector( 42.38, -273 -4, 26.71 ),size = 25,Colors = {Color(255,0,0,255),Color(255,0,0,255)},Speed = 0.04,},
+		{pos = Vector(32.891, -313.244 +49.7,48.38),size = 30,Colors = {Color(255,0,0,255),Color(255,0,0,255)},Speed = 0.04,},
+		{pos = Vector(-32.891,-313.244 +49.7,48.38),size = 30,Colors = {Color(255,0,0,255),Color(255,0,0,255)},Speed = 0.04,},
 	},
 	Turnsignal_sprites = { -- поворотники
 		Left = { -- левый
-            {pos = Vector( -49,-275, 27 + 8.5 ),size = 7,color=Color(255,120,0,255)},
+		{pos = Vector(-39.829,-313.244 +49.7,48.38),size = 30},
 		},
 		Right = { -- правый
-            {pos = Vector( 49,-275, 27 + 8.5 ),size = 7,color=Color(255,120,0,255)},
+		{pos = Vector(39.829,-313.244 +49.7,48.38),size = 30},
 		},
 	
 	},
@@ -149,7 +143,7 @@ local DKCAR = {
 	Name = "Reefer 3000R", -- название машины в меню
     Model = "models/tdmcars/trailers/reefer3000r.mdl", -- модель машины (в вкладке дополнения и проп авто)
     Category = "TDM Trailers", -- категория в которой будет машина
-    SpawnOffset = Vector(0,0,61),
+    SpawnOffset = Vector(0,0,0),
     SpawnAngleOffset = 0,
  
     Members = {
@@ -159,8 +153,12 @@ local DKCAR = {
 	        if ent.SimfIsTrailer != nil then 
 	        	ent:SetActive( true ) -- makes avtive
 	        	ent:SetSimfIsTrailer(true)  -- Is traieler?true - yes, false - no
-	        	ent:SetTrailerCenterposition(Vector(0,250,35)) -- position of center ballsocket for trailer hook 33
-                ent:SetCenterposition(Vector(0,-96.5,21.2)) -- position of center ballsocket for tow hitch(trailer coupling)
+	        	ent:SetTrailerCenterposition(Vector(0,216.2,37)) -- position of center ballsocket for trailer hook 33
+				ent:SetCenterposition(Vector(0,-96.5,21.2)) -- position of center ballsocket for tow hitch(trailer coupling)
+				
+				ent:SetLightsEnabled(true)
+				ent:SetFogLightsEnabled(true)
+				ent:SetEMSEnabled(true)
 	        else
         		print("This trailer support trailers BASE, but you don't installed it")
         	end
@@ -201,7 +199,7 @@ local DKCAR = {
         FrontWheelRadius = 21,--радиус переднего колеса
         RearWheelRadius = 21,--радиус заднего колеса
  
-        CustomMassCenter = Vector(0,-40,23.3),
+        CustomMassCenter = Vector(0,0,23.3),
  
 		SeatOffset = Vector(226.4,-32.1,30), -- положение водительского сидения
         SeatPitch = 0,
@@ -288,30 +286,65 @@ local light_table = {
 	R_RearLampPos = Vector(96,23.6,3.3), -- расположение задних фар
     R_RearLampAng = Angle(0,0,0), -- угол поворота фар
     Rearlight_sprites = { -- задние фары
-        Vector( -36, -277.6, 26.5 ),
-        Vector( 36,  -277.6, 26.5 ),
+		--{pos = Vector( -38.29, -63.3, 28.12 ),size = 30,color=Color(255,0,0,100),material="sprites/light_ignorez"},
 
-        {pos = Vector( -43, -272.5, 34 -1 ),size = 15,color=Color(255,120,0,100),material="sprites/light_ignorez"},
-        {pos = Vector( -43, -272.5, 37 -1 ),size = 15,color=Color(255,120,0,100),material="sprites/light_ignorez"},
-        {pos = Vector( -43, -272.5, 40 -1 ),size = 15,color=Color(255,120,0,100),material="sprites/light_ignorez"},
-        {pos = Vector( -43, -272.5, 43 -1 ),size = 15,color=Color(255,120,0,100),material="sprites/light_ignorez"},
-        {pos = Vector( -43, -272.5, 46 -1 ),size = 15,color=Color(255,120,0,100),material="sprites/light_ignorez"},
-        {pos = Vector( -43, -272.5, 49 -1 ),size = 15,color=Color(255,120,0,100),material="sprites/light_ignorez"},
+		--{pos = Vector( 38.29, -63.3, 28.12 ),size = 30,color=Color(255,0,0,100),material="sprites/light_ignorez"},
 
-        {pos = Vector( 43, -272.5, 34 -1 ),size = 15,color=Color(255,120,0,100),material="sprites/light_ignorez"},
-        {pos = Vector( 43, -272.5, 37 -1 ),size = 15,color=Color(255,120,0,100),material="sprites/light_ignorez"},
-        {pos = Vector( 43, -272.5, 40 -1 ),size = 15,color=Color(255,120,0,100),material="sprites/light_ignorez"},
-        {pos = Vector( 43, -272.5, 43 -1 ),size = 15,color=Color(255,120,0,100),material="sprites/light_ignorez"},
-        {pos = Vector( 43, -272.5, 46 -1 ),size = 15,color=Color(255,120,0,100),material="sprites/light_ignorez"},
-        {pos = Vector( 43, -272.5, 49 -1 ),size = 15,color=Color(255,120,0,100),material="sprites/light_ignorez"},
+		{pos = Vector( -31.88, -63.3, 28.12 ),size = 30,color=Color(255,0,0,100),material="sprites/light_ignorez"},
+		{pos = Vector( -35.04, -63.3, 28.12 ),size = 30,color=Color(255,0,0,100),material="sprites/light_ignorez"},
+		{pos = Vector( -38.29, -63.3, 28.12 ),size = 30,color=Color(255,0,0,100),material="sprites/light_ignorez"},
+
+		{pos = Vector( 31.88, -63.3, 28.12 ),size = 30 ,color=Color(255,0,0,100),material="sprites/light_ignorez"},
+		{pos = Vector( 35.04, -63.3, 28.12 ),size = 30 ,color=Color(255,0,0,100),material="sprites/light_ignorez"},
+		{pos = Vector( 38.29, -63.3, 28.12 ),size = 30 ,color=Color(255,0,0,100),material="sprites/light_ignorez"},
+	},
+	Reverselight_sprites = { -- фары заднего хода
+		{pos = Vector( -28.79, -63.3, 30 ),size = 15},
+		{pos = Vector( -28.79, -63.3, 29 ),size = 15},
+		{pos = Vector( -28.79, -63.3, 28.12 ),size = 15},
+		{pos = Vector( -28.79, -63.3, 27 ),size = 15},
+		{pos = Vector( -28.79, -63.3, 26 ),size = 15},
+
+		{pos = Vector( 28.79, -63.3, 30 ),size = 15},
+		{pos = Vector( 28.79, -63.3, 29 ),size = 15},
+		{pos = Vector( 28.79, -63.3, 28.12 ),size = 15},
+		{pos = Vector( 28.79, -63.3, 27 ),size = 15},
+		{pos = Vector( 28.79, -63.3, 26 ),size = 15},
 	},
 	ems_sprites = { -- тормозные огни
-        {pos = Vector( -42.38,-273 -4, 26.71 ),size = 25,Colors = {Color(255,0,0,255),Color(255,0,0,255)},Speed = 0.04,},
-        {pos = Vector( 42.38, -273 -4, 26.71 ),size = 25,Colors = {Color(255,0,0,255),Color(255,0,0,255)},Speed = 0.04,},
+		{pos = Vector( -31.88, -63.3, 28.12 ),size = 30,Colors = {Color(255,0,0,255),Color(255,0,0,255)},Speed = 0.04,material="sprites/light_ignorez"},
+		{pos = Vector( -35.04, -63.3, 28.12 ),size = 30,Colors = {Color(255,0,0,255),Color(255,0,0,255)},Speed = 0.04,material="sprites/light_ignorez"},
+		{pos = Vector( -38.29, -63.3, 28.12 ),size = 30,Colors = {Color(255,0,0,255),Color(255,0,0,255)},Speed = 0.04,material="sprites/light_ignorez"},
+
+		{pos = Vector( 31.88, -63.3, 28.12 ),size = 30,Colors = {Color(255,0,0,255),Color(255,0,0,255)},Speed = 0.04,material="sprites/light_ignorez"},
+		{pos = Vector( 35.04, -63.3, 28.12 ),size = 30,Colors = {Color(255,0,0,255),Color(255,0,0,255)},Speed = 0.04,material="sprites/light_ignorez"},
+		{pos = Vector( 38.29, -63.3, 28.12 ),size = 30,Colors = {Color(255,0,0,255),Color(255,0,0,255)},Speed = 0.04,material="sprites/light_ignorez"},
 	},
 	Turnsignal_sprites = { -- поворотники
 		Left = { -- левый
-            {pos = Vector( -49,-275, 27 + 8.5 ),size = 7,color=Color(255,120,0,255)},
+			{pos = Vector( -43, -63.3, 30 ),size = 20,color=Color(255,120,0,255)},
+			{pos = Vector( -43, -63.3, 29 ),size = 20,color=Color(255,120,0,255)},
+			{pos = Vector( -43, -63.3, 28.12 ),size = 20,color=Color(255,120,0,255)},
+			{pos = Vector( -43, -63.3, 27 ),size = 20,color=Color(255,120,0,255)},
+			{pos = Vector( -43, -63.3, 26 ),size = 20,color=Color(255,120,0,255)},
+
+			{pos = Vector( -42, -63.3, 30 ),size = 20,color=Color(255,120,0,255)},
+			{pos = Vector( -42, -63.3, 29 ),size = 20,color=Color(255,120,0,255)},
+			{pos = Vector( -42, -63.3, 28.12 ),size = 20,color=Color(255,120,0,255)},
+			{pos = Vector( -42, -63.3, 27 ),size = 20,color=Color(255,120,0,255)},
+			{pos = Vector( -42, -63.3, 26 ),size = 20,color=Color(255,120,0,255)},
+
+			{pos = Vector( 43, -63.3, 30 ),size = 20,color=Color(255,120,0,255)},
+			{pos = Vector( 43, -63.3, 29 ),size = 20,color=Color(255,120,0,255)},
+			{pos = Vector( 43, -63.3, 28.12 ),size = 20,color=Color(255,120,0,255)},
+			{pos = Vector( 43, -63.3, 27 ),size = 20,color=Color(255,120,0,255)},
+			{pos = Vector( 43, -63.3, 26 ),size = 20,color=Color(255,120,0,255)},
+
+			{pos = Vector( 42, -63.3, 30 ),size = 20,color=Color(255,120,0,255)},
+			{pos = Vector( 42, -63.3, 29 ),size = 20,color=Color(255,120,0,255)},
+			{pos = Vector( 42, -63.3, 28.12 ),size = 20,color=Color(255,120,0,255)},
+			{pos = Vector( 42, -63.3, 27 ),size = 20,color=Color(255,120,0,255)},
+			{pos = Vector( 42, -63.3, 26 ),size = 20,color=Color(255,120,0,255)},
 		},
 		Right = { -- правый
             {pos = Vector( 49,-275, 27 + 8.5 ),size = 7,color=Color(255,120,0,255)},
@@ -339,10 +372,7 @@ local DKCAR = {
 	        	ent:SetTrailerCenterposition(Vector(0,147,39)) -- position of center ballsocket for trailer hook 33
 				ent:SetCenterposition(Vector(0,-11,46)) -- position of center ballsocket for tow hitch(trailer coupling)
 
-				ent:SetLightsEnabled(true)
-				--ent:SetFogLightsEnabled(true)
-				ent:SetEMSEnabled(true)
-
+				
 				table.insert(TDM_dollys, ent)
 	        else
         		print("This trailer support trailers BASE, but you don't installed it")
