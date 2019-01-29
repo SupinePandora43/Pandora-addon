@@ -1,14 +1,13 @@
 AddCSLuaFile()
 TDM_dollys = TDM_dollys or {}
-if file.Exists("autorun/simftrailers_shared.lua", "LUA") then
-	hook.Add("Think", "_simf_trailer_to_trailer", function()
-		--if not trlist then return end
-		for k,dolly in pairs(TDM_dollys) do 
-			if !IsValid(dolly) then table.remove(TDM_dollys, k) return end 
-			for k, ent in pairs( ents.FindInSphere( dolly:LocalToWorld(dolly:GetCenterposition()), 30 ) ) do
+if file.Exists("autorun/simftrailers_shared.lua", "LUA") then--edited simf_trailer_main_code for dolly support
+	hook.Add("Think", "_simf_trailer_to_trailer", function()--Cyka Blyat
+		for k,dolly in pairs(TDM_dollys) do if not IsValid(dolly) then table.remove(TDM_dollys, k) end end
+		for _,dolly in pairs(TDM_dollys) do 
+			for _, ent in pairs( ents.FindInSphere( dolly:LocalToWorld(dolly:GetCenterposition()), 30 ) ) do
 				local dollyphys=dolly:GetPhysicsObject()
 				if ( ent:GetClass() == "gmod_sent_vehicle_fphysics_base" ) then
-					if ent != dolly then 
+					if not ent == dolly then 
 						if ent:SimfIsTrailer() then
 							if dolly:LocalToWorld(dolly:GetCenterposition()):Distance(ent:LocalToWorld(ent:GetTrailerCenterposition())) <= 3 then
 								if not ent:GetNWBool("_is_trailer_was_connected_", false) then
@@ -16,34 +15,70 @@ if file.Exists("autorun/simftrailers_shared.lua", "LUA") then
 										constraint.Ballsocket( ent, dolly,  0, 0, dolly:GetCenterposition(), 0, 0, 0 )
 										dollyphys:ApplyForceCenter( Vector( ent:GetTrailerCenterposition() ) )
 										ent:SetNWBool("_is_trailer_was_connected_", true)
+										ent:SetNWEntity("connected_dolly", dolly)
+										dolly.coupledTrailer=ent
 									--end
+								elseif not IsValid(constraint.FindConstraintEntity(ent, "Ballsocket")) then--ent:GetNWEntity("connected_dolly", nil)
+									ent:SetNWBool("_is_trailer_was_connected_", false)
+									--constraint.RemoveConstraints( ply:GetVehicle():GetParent(), "Ballsocket" )
 								end
 							end
-							if dolly:LocalToWorld(dolly:GetCenterposition()):Distance(ent:LocalToWorld(ent:GetTrailerCenterposition())) <= 25 then
+							--if dolly:LocalToWorld(dolly:GetCenterposition()):Distance(ent:LocalToWorld(ent:GetTrailerCenterposition())) <= 10 then
+							if IsValid(dolly.coupledTrailer) then
 								if dolly:GetLightsEnabled() then
-									ent:SetLightsEnabled(true)
+									dolly.coupledTrailer:SetLightsEnabled(true)
 								else
-									ent:SetLightsEnabled(false)
+									dolly.coupledTrailer:SetLightsEnabled(false)
 								end
 								if dolly:GetIsBraking() then
-									ent:SetEMSEnabled(true)
+									dolly.coupledTrailer:SetEMSEnabled(true)
 								else
-									ent.PressedKeys["joystick_handbrake"] = 0
-									ent:SetHandBrakeEnabled(false)
-									ent:SetEMSEnabled(false)
+									dolly.coupledTrailer.PressedKeys["joystick_handbrake"] = 0
+									dolly.coupledTrailer:SetHandBrakeEnabled(false)
+									dolly.coupledTrailer:SetEMSEnabled(false)
 								end
 								if dolly:GetFogLightsEnabled() then
-									ent:SetFogLightsEnabled(true)
+									dolly.coupledTrailer:SetFogLightsEnabled(true)
 								else
-									ent:SetFogLightsEnabled(false)
+									dolly.coupledTrailer:SetFogLightsEnabled(false)
 								end
 
 								if dolly:GetGear() == 1 then
-									ent:SetNWBool("zadnyaya_gear", true)
+									dolly.coupledTrailer:SetNWBool("zadnyaya_gear", true)
 								elseif dolly:GetGear() >= 2 then
-									ent:SetNWBool("zadnyaya_gear", false)
+									dolly.coupledTrailer:SetNWBool("zadnyaya_gear", false)
 								end
-								if dolly:GetLeftSignalEnabled() and not dolly:GetRightSignalEnabled() then
+								local turnmode=dolly.signal_left and (dolly.signal_right and 1 or 2) or (dolly.signal_right and 3 or 0)--wow
+								turnmode=2
+								if turnmode == 2 then
+									net.Start( "simfphys_turnsignal" )
+									net.WriteEntity( dolly.coupledTrailer )
+									net.WriteInt( 2, 32 )
+									net.Broadcast()
+								elseif turnmode == 3 then
+									net.Start( "simfphys_turnsignal" )
+									net.WriteEntity( dolly.coupledTrailer )
+									net.WriteInt( 3, 32 )
+									net.Broadcast()
+								elseif turnmode == 1 then
+									net.Start( "simfphys_turnsignal" )
+									net.WriteEntity( dolly.coupledTrailer )
+									net.WriteInt( 1, 32 )
+									net.Broadcast()
+								elseif turnmode == 0 then
+									net.Start( "simfphys_turnsignal" )
+									net.WriteEntity( dolly.coupledTrailer )
+									net.WriteInt( 0, 32 )
+									net.Broadcast()
+								end
+								net.Start( "simfphys_turnsignal" )
+									net.WriteEntity( dolly.coupledTrailer )
+									net.WriteInt( 3, 32 )
+									net.Broadcast()
+								dolly.coupledTrailer:SetRightSignalEnabled(true)
+								print(dolly.coupledTrailer.signal_left)
+								--print(dolly.signal_left)
+								--[[if dolly:GetLeftSignalEnabled() and not dolly:GetRightSignalEnabled() then
 									net.Start( "simfphys_turnsignal" )
 									net.WriteEntity( ent )
 									net.WriteInt( 2, 32 )
@@ -63,9 +98,32 @@ if file.Exists("autorun/simftrailers_shared.lua", "LUA") then
 									net.WriteEntity( ent )
 									net.WriteInt( 0, 32 )
 									net.Broadcast()
-								end
+								end]]
 							end
 						end
+						--[[local Time = CurTime()
+						if  ent:IsInitialized() then
+							ent:SetColors()
+							ent:SimulateVehicle( Time )
+							ent:ControlLighting( Time )
+							ent:ControlHorn()
+							
+							if istable( WireLib ) then
+								ent:UpdateWireOutputs()
+							end
+							
+							ent.NextWaterCheck = dolly.NextWaterCheck or 0
+							if ent.NextWaterCheck < Time then
+								ent.NextWaterCheck = Time + 0.5
+								ent:WaterPhysics()
+							end
+							
+							if ent:GetActive() then
+								ent:SetPhysics( ((math.abs(ent.ForwardSpeed) < 50) and (ent.Brake > 0 or ent.HandBrake > 0)) )
+							else
+								ent:SetPhysics( true )
+							end
+						end]]
 					end
 				end
 			end
@@ -150,7 +208,7 @@ local DKCAR = {
         Mass = 1150, -- масса авто
 
         OnSpawn = function(ent)
-	        if ent.SimfIsTrailer != nil then 
+	        if not ent.SimfIsTrailer == nil then 
 	        	ent:SetActive( true ) -- makes avtive
 	        	ent:SetSimfIsTrailer(true)  -- Is traieler?true - yes, false - no
 	        	ent:SetTrailerCenterposition(Vector(0,216.2,37)) -- position of center ballsocket for trailer hook 33
@@ -173,7 +231,7 @@ local DKCAR = {
                 physMass=physMass+700
             end
             phys:SetMass(physMass)
-            if ent.SimfIsTrailer != nil then 
+            if not ent.SimfIsTrailer == nil then 
 	        	ent:Lock() -- locks trailer
 	        	if not ent:GetIsBraking() then
 	        		ent.ForceTransmission = 1
@@ -333,7 +391,8 @@ local light_table = {
 			{pos = Vector( -42, -63.3, 28.12 ),size = 20,color=Color(255,120,0,255)},
 			{pos = Vector( -42, -63.3, 27 ),size = 20,color=Color(255,120,0,255)},
 			{pos = Vector( -42, -63.3, 26 ),size = 20,color=Color(255,120,0,255)},
-
+		},
+		Right = { -- правый
 			{pos = Vector( 43, -63.3, 30 ),size = 20,color=Color(255,120,0,255)},
 			{pos = Vector( 43, -63.3, 29 ),size = 20,color=Color(255,120,0,255)},
 			{pos = Vector( 43, -63.3, 28.12 ),size = 20,color=Color(255,120,0,255)},
@@ -345,9 +404,6 @@ local light_table = {
 			{pos = Vector( 42, -63.3, 28.12 ),size = 20,color=Color(255,120,0,255)},
 			{pos = Vector( 42, -63.3, 27 ),size = 20,color=Color(255,120,0,255)},
 			{pos = Vector( 42, -63.3, 26 ),size = 20,color=Color(255,120,0,255)},
-		},
-		Right = { -- правый
-            {pos = Vector( 49,-275, 27 + 8.5 ),size = 7,color=Color(255,120,0,255)},
 		},
 	
 	},
@@ -363,10 +419,10 @@ local DKCAR = {
     SpawnAngleOffset = 0,
  
     Members = {
-        Mass = 350, -- масса авто
+        Mass = 700, -- масса авто
 
         OnSpawn = function(ent)
-	        if ent.SimfIsTrailer != nil then 
+	        if not ent.SimfIsTrailer == nil then 
 	        	ent:SetActive( true ) -- makes avtive
 	        	ent:SetSimfIsTrailer(true)  -- Is traieler?true - yes, false - no
 	        	ent:SetTrailerCenterposition(Vector(0,147,39)) -- position of center ballsocket for trailer hook 33
@@ -379,7 +435,7 @@ local DKCAR = {
         	end
         end,
 		OnTick = function(ent) 
-            if ent.SimfIsTrailer != nil then 
+            if not ent.SimfIsTrailer == nil then 
 	        	ent:Lock() -- locks trailer
 	        	if not ent:GetIsBraking() then
 	        		ent.ForceTransmission = 1
@@ -492,10 +548,10 @@ local DKCAR = {
     SpawnAngleOffset = 0,
  
     Members = {
-        Mass = 500, -- масса авто
+        Mass = 700, -- масса авто
 
         OnSpawn = function(ent)
-	        if ent.SimfIsTrailer != nil then 
+	        if not ent.SimfIsTrailer == nil then 
 	        	ent:SetActive( true ) -- makes avtive
 				ent:SetSimfIsTrailer(true)  -- Is traieler?true - yes, false - no
 	        	ent:SetTrailerCenterposition(Vector(0,118,36)) -- position of center ballsocket for trailer hook 33
@@ -507,7 +563,7 @@ local DKCAR = {
         	end
         end,
 		OnTick = function(ent) 
-            if ent.SimfIsTrailer != nil then 
+            if not ent.SimfIsTrailer == nil then 
 	        	ent:Lock() -- locks trailer
 	        	if not ent:GetIsBraking() then
 	        		ent.ForceTransmission = 1

@@ -78,7 +78,7 @@ local DKCAR = {
         Mass = 1150, -- масса авто
 
         OnSpawn = function(ent)
-	        if ent.SimfIsTrailer != nil then 
+	        if not ent.SimfIsTrailer == nil then 
 	        	ent:SetActive( true ) -- makes avtive
 	        	ent:SetSimfIsTrailer(true)  -- Is traieler?true - yes, false - no
 	        	ent:SetTrailerCenterposition(Vector(0,250,35)) -- position of center ballsocket for trailer hook 33
@@ -97,7 +97,7 @@ local DKCAR = {
                 physMass=physMass+700
             end
             phys:SetMass(physMass)
-            if ent.SimfIsTrailer != nil then 
+            if not ent.SimfIsTrailer == nil then 
 	        	ent:Lock() -- locks trailer
 	        	if not ent:GetIsBraking() then
 	        		ent.ForceTransmission = 1
@@ -291,7 +291,7 @@ local DKCAR = {
         Mass = 900, -- масса авто
 
         OnSpawn = function(ent)
-	        if ent.SimfIsTrailer != nil then 
+	        if not ent.SimfIsTrailer == nil then 
 	        	ent:SetActive( true ) -- makes avtive
 	        	ent:SetSimfIsTrailer(true)  -- Is traieler?true - yes, false - no
 	        	ent:SetTrailerCenterposition(Vector(0,122,30)) -- position of center ballsocket for trailer hook
@@ -305,7 +305,7 @@ local DKCAR = {
 	        if not (ent:GetBodygroup(2) == 0 or ent:GetBodygroup(2) ==5) then
                 phys:SetMass(1100)
             else phys:SetMass(900) end
-            if ent.SimfIsTrailer != nil then 
+            if not ent.SimfIsTrailer == nil then 
 	        	ent:Lock() -- locks trailer
 	        	if not ent:GetIsBraking() then
 	        		ent.ForceTransmission = 1
@@ -414,10 +414,10 @@ end
 local light_table = {
     ModernLights = true,
     
-    L_HeadLampPos = Vector(-36.74,121.35,45.43),
+    --[[L_HeadLampPos = Vector(-36.74,121.35,45.43),
 	L_HeadLampAng = Angle(15,90,0),
 	R_HeadLampPos = Vector(32.15,118.88,45.13),
-	R_HeadLampAng = Angle(15,90,0),
+	R_HeadLampAng = Angle(15,90,0),]]
 
 	L_RearLampPos = Vector(96,-23.6,3.3), -- расположение задних фар
 	L_RearLampAng = Angle(0,0,0), -- угол поворота фар
@@ -479,7 +479,7 @@ local DKCAR = {
         Mass = 700, -- масса авто
 
         OnSpawn = function(ent)
-	        if ent.SimfIsTrailer != nil then 
+	        if not ent.SimfIsTrailer == nil then 
 	        	ent:SetActive( true ) -- makes avtive
 	        	ent:SetSimfIsTrailer(true)  -- Is traieler?true - yes, false - no
 	        	ent:SetTrailerCenterposition(Vector(0,234.5,32)) -- position of center ballsocket for trailer hook
@@ -499,7 +499,7 @@ local DKCAR = {
             else
                 phys:SetMass(525) 
             end
-            if ent.SimfIsTrailer != nil then 
+            if not ent.SimfIsTrailer == nil then 
 	        	ent:Lock() -- locks trailer
 	        	if not ent:GetIsBraking() then
 	        		ent.ForceTransmission = 1
@@ -678,7 +678,7 @@ local DKCAR = {
         Mass = 700, -- масса авто
 
         OnSpawn = function(ent)
-	        if ent.SimfIsTrailer != nil then 
+	        if not ent.SimfIsTrailer == nil then 
 	        	ent:SetActive( true ) -- makes avtive
 	        	ent:SetSimfIsTrailer(true)  -- Is traieler?true - yes, false - no
 	        	ent:SetTrailerCenterposition(Vector(0,226.6,33)) -- position of center ballsocket for trailer hook
@@ -688,7 +688,7 @@ local DKCAR = {
         	end
         end,
         OnTick = function(ent) 
-            if ent.SimfIsTrailer != nil then 
+            if not ent.SimfIsTrailer == nil then 
 	        	ent:Lock() -- locks trailer
 	        	if not ent:GetIsBraking() then
 	        		ent.ForceTransmission = 1
@@ -895,7 +895,7 @@ local DKCAR = {
         Mass = 700, -- масса авто
 
         OnSpawn = function(ent)
-	        if ent.SimfIsTrailer != nil then 
+	        if not ent.SimfIsTrailer == nil then 
 	        	ent:SetActive( true ) -- makes avtive
 	        	ent:SetSimfIsTrailer(true)  -- Is traieler?true - yes, false - no
 	        	ent:SetTrailerCenterposition(Vector(0,211,30)) -- position of center ballsocket for trailer hook
@@ -905,7 +905,7 @@ local DKCAR = {
         	end
         end,
         OnTick = function(ent) 
-            if ent.SimfIsTrailer != nil then 
+            if not ent.SimfIsTrailer == nil then 
 	        	ent:Lock() -- locks trailer
 	        	if not ent:GetIsBraking() then
 	        		ent.ForceTransmission = 1
@@ -1079,7 +1079,7 @@ local DKCAR = {
         Mass = 700, -- масса авто
 
         OnSpawn = function(ent)
-	        if ent.SimfIsTrailer != nil then 
+	        if not ent.SimfIsTrailer == nil then 
 	        	ent:SetActive( true ) -- makes avtive
 	        	ent:SetSimfIsTrailer(true)  -- Is traieler?true - yes, false - no
 	        	ent:SetTrailerCenterposition(Vector(0,193.5,30)) -- position of center ballsocket for trailer hook
@@ -1089,7 +1089,7 @@ local DKCAR = {
         	end
         end,
         OnTick = function(ent) 
-            if ent.SimfIsTrailer != nil then 
+            if not ent.SimfIsTrailer == nil then 
 	        	ent:Lock() -- locks trailer
 	        	if not ent:GetIsBraking() then
 	        		ent.ForceTransmission = 1
@@ -1279,7 +1279,7 @@ local DKCAR = {
         Mass = 700, -- масса авто
 
         OnSpawn = function(ent)
-            if ent.SimfIsTrailer != nil then 
+            if not ent.SimfIsTrailer == nil then 
 	        	ent:SetActive( true ) -- makes avtive
 	        	ent:SetSimfIsTrailer(true)  -- Is traieler?true - yes, false - no
 	        	ent:SetTrailerCenterposition(Vector(0,216.4,30)) -- position of center ballsocket for trailer hook
@@ -1295,7 +1295,7 @@ local DKCAR = {
             else
                 phys:SetMass(525) 
             end
-            if ent.SimfIsTrailer != nil then 
+            if not ent.SimfIsTrailer == nil then 
 	        	ent:Lock() -- locks trailer
 	        	if not ent:GetIsBraking() then
 	        		ent.ForceTransmission = 1
