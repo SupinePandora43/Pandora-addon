@@ -21,7 +21,14 @@ list.Set( "NPC", "npc_pandoras_scp_049", {
 } )
 function ENT:Initialize()
 	if SERVER then
-		self.Entity:SetModel("models/vinrax/player/scp049_player.mdl")
+		if(file.Exists("models/vinrax/player/scp049_player.mdl", "GAME")) then
+			self:SetModel("models/vinrax/player/scp049_player.mdl")
+		elseif(file.Exists("models/cpthazama/scp/049.mdl", "GAME")) then
+			self:SetModel("models/cpthazama/scp/049.mdl")
+		else
+			self:SetModel("models/gman.mdl")
+			self:SetColor(Color(255, 50, 50, 255))
+		end
 		self.LoseTargetDist = 2000
 		self.SearchRadius = 2000
 		self.AttackRadius = 40

@@ -26,22 +26,30 @@ function spandora.scp:IsEnemy(self1,ent)
 	end
 	return false
 end
-if CLIENT then
-	local function initLanguageAdd(key, phrase)
-		local key = key or ""
-		if(string.StartWith(phrase, "#")) then
-			phrase=string.sub(phrase, 2)
-			language.Add(key, phrase)
-		end
-		spandora.lang[key] = phrase
-	end
-	local function initLanguage(cvar, old, new) --I'm not use language.add, because in my gmod, ALL menu languages is empty: #LoadingScreen_LoadResources
+if true then
+	local function initLanguage(cvar, old, new)
 		spandora.lang = {}
-		for k, v in pairs(file.Exists("spandora_lang/en.lua", "LUA") and include("spandora_lang/en.lua") or {}) do
-			initLanguageAdd(k, v)
+		if file.Exists("spandora_lang/en.lua", "LUA") then
+			if SERVER then
+				AddCSLuaFile("spandora_lang/en.lua")
+			end
+			if CLIENT then
+				for k, v in pairs(include("spandora_lang/en.lua")) do
+					spandora.lang[k] = phrase
+					print("KEY: " .. k .. ", PHRASE: " .. v)
+				end
+			end
 		end
-		for k, v in pairs(file.Exists("spandora_lang/"..new..".lua", "LUA") and include("spandora_lang/"..new..".lua") or {}) do
-			initLanguageAdd(k, v)
+		if file.Exists("spandora_lang/"..new..".lua", "LUA") then
+			if SERVER then
+				AddCSLuaFile("spandora_lang/en.lua")
+			end
+			if CLIENT then
+				for k, v in pairs(include("spandora_lang/"..new..".lua")) do
+					spandora.lang[k] = phrase
+					print("KEY: " .. k .. ", PHRASE: " .. v)
+				end
+			end
 		end
 	end
 	initLanguage("gmod_language", nil, GetConVar("gmod_language"):GetString())
@@ -64,23 +72,3 @@ concommand.Add("pandora_blacklist_clear", function(ply, cmd, args)
 		ply:PrintMessage(HUD_PRINTCONSOLE, spandora.lang.not_admin) 
 	end
 end, nil, spandora.lang.blclear, {FCVAR_ARCHIVE, FCVAR_LUA_SERVER})
-if istable(DecentVehicleDestination) then
-	--CreateClientConVar("pandora_decent_precache", "1", true, false, spandora.lang.decent_precache)
-	CreateConVar("pandora_decent_precache", "0", {FCVAR_ARCHIVE, FCVAR_LUA_CLIENT}, spandora.lang.decent_precache)
-	local function decent_precache()
-		if GetConVar("pandora_decent_precache"):GetBool() then
-			hook.Add("OnEntityCreated", "SupinePandora43_Hook_DecentPrecache", function(ent)
-				if ent:GetClass() == "npc_decentvehicle" and not spandora.precached then
-					for _, modelPath in pairs(DecentVehicleDestination.DefaultDriverModel) do
-						util.PrecacheModel(modelPath)
-					end
-					spandora.precached = true
-				end
-			end)
-		else
-			hook.Remove("OnEntityCreated", "SupinePandora43_Hook_DecentPrecache")
-		end
-	end
-	decent_precache()
-	cvars.AddChangeCallback("pandora_decent_precache", decent_precache)
-end

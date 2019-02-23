@@ -1,0 +1,6 @@
+"UnlitGeneric"
+{
+	"$basetexture"		"spandora/killicons/suicide_killicon"
+	"$vertexcolor" 		1
+	"$vertexalpha" 		1
+}

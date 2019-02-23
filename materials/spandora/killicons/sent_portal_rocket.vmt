@@ -1,0 +1,6 @@
+"UnlitGeneric"
+{
+	"$basetexture"		"spandora/killicons/sent_portal_rocket"
+	"$vertexcolor" 		1
+	"$vertexalpha" 		1
+}

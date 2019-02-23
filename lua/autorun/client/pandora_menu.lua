@@ -1,0 +1,6 @@
+hook.Add( "PopulateToolMenu", "CustomMenuSettings", function()
+	spawnmenu.AddToolMenuOption( "Utilities", "SupinePandora43", "SupinePandora43_CMS_Settings", "Settings", "", "", function( panel )
+		panel:ClearControls()
+		panel:AddControl("CheckBox", {Label=spandora.lang.clownshadow, Command="cl_drawownshadow"})
+	end )
+end )
