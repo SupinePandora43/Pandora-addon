@@ -6,7 +6,7 @@ maded by SupinePandora43/сделано SupinePandora43(Андрей)
 * [simfphys] [Trailers Support](https://github.com/SupinePandora43/Pandoras-addon/blob/master/TrailersBaseTweaks.md)
 * KillIcons (for lot entities!!!)
 * [simfphys] Missing TDM Trailers (trailers base add not all tdm trailers)
-
+* Arcade'r Tool (normal trains to arcade)
 
 
 # DO NOT UPLOAD TO WORKSHOP
