@@ -17,16 +17,27 @@ function TOOL:LeftClick(trace)
 		local train = trace.Entity
 		local pos = train:GetPos()
 		local ang = train:GetAngles()
-		--[[if train.FrontCouple then--защита
-			train.RearCouple:Decouple()
-		end
-		if train.RearBogey then
-			train.RearCouple:Decouple()
-		end]]
 		local ArcadeTrain=ents.Create(train:GetClass())
+		undo.ReplaceEntity(train, ArcadeTrain)
 		SafeRemoveEntity(train)
 		ArcadeTrain:SetPos(pos-Vector(0, 0, 120))
 		ArcadeTrain:SetAngles(ang)
+		local defInitializeSounds = ArcadeTrain.InitializeSounds
+		function ArcadeTrain:InitializeSounds()
+			defInitializeSounds()
+			if (not self.SoundNames["horn"]) and self.SoundNames["horn1"] then
+				self.SoundNames["horn"] = self.SoundNames["horn1"]
+				self.SoundPositions["horn"] = self.SoundPositions["horn1"]
+			elseif not (self.SoundNames["horn"] or self.SoundNames["horn1"]) then
+				self.SoundNames["horn"] = {
+					loop=0.6,
+					"subway_trains/common/pneumatic/horn/horn1_start.wav",
+					"subway_trains/common/pneumatic/horn/horn1_loop.wav",
+					"subway_trains/common/pneumatic/horn/horn1_end.mp3"
+				}
+				self.SoundPositions["horn"] = {1100,1e9,Vector(0,0,0),1}
+			end
+		end
 		function ArcadeTrain:InitializeSystems()
 			self:LoadSystem("Arcade_Systems")
 		end
@@ -44,33 +55,23 @@ function TOOL:LeftClick(trace)
 		ArcadeTrain:Spawn()
 		ArcadeTrain.Plombs = {}
 		ArcadeTrain.KeyMap = {
-		[KEY_W] = "Drive",
-		[KEY_S] = "Brake",
-		[KEY_R] = "Reverse",
-		[KEY_L] = "Horn",
-		[KEY_F] = "Turbo"
+			[KEY_W] =      "Drive",
+			[KEY_S] =      "Brake",
+			[KEY_R] =      "Reverse",
+			[KEY_L] =      "Horn",
+			[KEY_LSHIFT] = "Turbo"
 		}
+		ArcadeTrain.KeyMap[KEY_RSHIFT] = ArcadeTrain.KeyMap[KEY_LSHIFT] -- навсякий случий
 		undo.Create(ArcadeTrain.PrintName.." Arcade")
-		--undo.AddEntity(ArcadeTrain)
 		undo.AddFunction(function(tab, ArcadeTrain)
 			local pos = ArcadeTrain:GetPos()
 			local ang = ArcadeTrain:GetAngles()
 			local train1=ents.Create(ArcadeTrain:GetClass())
-			--[[if ArcadeTrain.FrontCouple then--защита
-				ArcadeTrain.RearCouple:Decouple()
-			end
-			if ArcadeTrain.RearBogey then
-				ArcadeTrain.RearCouple:Decouple()
-			end]]
+			undo.ReplaceEntity(ArcadeTrain, train1)
 			SafeRemoveEntity(ArcadeTrain)
 			train1:SetPos(pos-Vector(0, 0, 120))
 			train1:SetAngles(ang)
 			train1:Spawn()
-			--не затестеный код
-			undo.Create(train1.PrintName)
-			undo.AddEntity(train1)
-			undo.SetPlayer(tab.Owner)
-			undo.Finish()
 		end, ArcadeTrain)
 		undo.SetPlayer(ply)
 		undo.Finish()

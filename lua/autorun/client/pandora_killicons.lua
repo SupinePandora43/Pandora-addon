@@ -7,16 +7,16 @@ killicon.AddAlias( "weapon_pixelsword", "weapon_fists" )--adding KI to pixelswor
 killicon.AddAlias( "weapon_rpg", "rpg_missile" )--adding killicon to rpg(weapon) from missile
 killicon.AddAlias( "weapon_electrocannon", "rpg_missile" )--adding killicon to electrocannon(toybox)
 killicon.AddAlias( "electromissile", "weapon_electrocannon" )--adding killicon to electromissle(electrocannon)
---[[ ля не робит
 local files, _ = file.Find("materials/spandora/killicons/*","GAME")
 for _ , file1 in pairs(files) do
 	if string.EndsWith(file1, ".vtf") then continue end
-	file1=string.sub(file1, 1, #file1 - 4)
 	print("-------------------------------------------")
+	print(file1)
+	file1=string.Replace(file1, ".vmt", "")
 	print(file1)
 	print("-------------------------------------------")
 	killicon.Add(file1, "spandora/killicons/" .. file1, Color(255,80,0,255))
-end]]
+end
 if file.Exists("autorun/cl_killicons.lua", "LUA") then
 	killicon.Add("default", "killicons/sent_default_killicon", Color(255,80,0,255))
 	--killicon.AddAlias( "suicide", "default" )--fix for not changed icon 

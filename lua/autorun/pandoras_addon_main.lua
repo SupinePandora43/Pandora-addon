@@ -26,6 +26,26 @@ function spandora.scp:IsEnemy(self1,ent)
 	end
 	return false
 end
+if Metrostroi and SERVER then
+	local OldENT
+	local function AddTatraWheels()
+        OldENT = ENT
+        local ent = scripted_ents.GetStored("gmod_train_bogey")
+		if not ent then
+			return
+		end
+        ENT = ent.t
+		ENT.Types.tatra={
+			"models/metrostroi/tatra_t3/tatra_bogey.mdl",
+			Vector(0,0.0,-3),Angle(0,90,0),"models/metrostroi/tatra_t3/tatra_wheels.mdl",
+			Vector(0,-61,-14),Vector(0,61,-14),
+			nil,
+			Vector(4.3,-63,-3.3),Vector(4.3,63,-3.3),
+		}
+        ENT = OldENT
+    end
+    hook.Add("OnGamemodeLoaded", "SupinePandora43_Hook_TatraFix", AddTatraWheels)
+end
 if true then
 	local function initLanguage(cvar, old, new)
 		spandora.lang = {}
