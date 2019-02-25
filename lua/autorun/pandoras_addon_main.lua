@@ -37,7 +37,7 @@ if Metrostroi and SERVER then
         ENT = ent.t
 		ENT.Types.tatra={
 			"models/metrostroi/tatra_t3/tatra_bogey.mdl",
-			Vector(0,0.0,-3),Angle(0,90,0),"models/metrostroi/tatra_t3/tatra_wheels.mdl",
+			Vector(0,0.0,-3),Angle(0,0,0),"models/metrostroi/tatra_t3/tatra_wheels.mdl",
 			Vector(0,-61,-14),Vector(0,61,-14),
 			nil,
 			Vector(4.3,-63,-3.3),Vector(4.3,63,-3.3),
