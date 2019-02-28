@@ -17,10 +17,11 @@ if CLIENT then
 		print(ArcadeTrain)
 	end)]]
 end
-function TOOL:GetTrain(ent)
+function TOOL:GetTrain(ent, i)
+	local i = i or 0
 	if ent.InitializeSystems then return ent end
-	if IsValid(ent:GetParent()) and ent:GetParent().InitializeSystems then return ent:GetParent() end
-	if IsValid(ent:GetParent()) and IsValid(ent:GetParent():GetParent()) and ent:GetParent():GetParent().InitializeSystems then return ent:GetParent():GetParent() end
+	if i > 10 then return nil end
+	if IsValid(ent:GetParent()) then return self:GetTrain(ent, i + 1) end
 end
 function TOOL:LeftClick(trace)
 	if CLIENT then return true end
@@ -30,7 +31,6 @@ function TOOL:LeftClick(trace)
 	if not IsValid(trace.Entity) then return false end
 	if self:GetTrain(trace.Entity) then
 		local train = trace.Entity
-		--if SERVER and CLIENT and IsValid(train.DriverSeat) and 
 		local pos = train:GetPos()
 		local ang = train:GetAngles()
 		local ArcadeTrain = ents.Create(train:GetClass())
@@ -44,21 +44,19 @@ function TOOL:LeftClick(trace)
 		--[[timer.Simple(0.1, function()
 			net.Start("SupinePandora43_Net_Arcader_To_CL")
 			net.WriteEntity(ArcadeTrain)
-			net.Broadcast()
-		end)]]
+			net.Broadcast()]]
+		
 		function ArcadeTrain:Think()
 			self.BaseClass.Think(self)
 			for k, v in pairs(self.Lights) do
 				self:SetLightPower(k, true)
 			end
-			self:SetSoundState("horn", self:GetPackedBool("Horn", false) and 1 or 0,1)
 		end
 		function ArcadeTrain:TrainSpawnerUpdate() end
-		function ArcadeTrain:OnButtonPress(button,ply) end
+		function ArcadeTrain:OnButtonPress(button, ply) end
 		function ArcadeTrain:PostInitializeSystems() end
 		function ArcadeTrain:OnButtonRelease() end
 		function ArcadeTrain:NonSupportTrigger() end
-		--timer.Simple(0.5, function()
 		ArcadeTrain:Spawn()
 		ArcadeTrain.Plombs = {}
 		ArcadeTrain.KeyMap = {
@@ -74,7 +72,7 @@ function TOOL:LeftClick(trace)
 			if(not IsValid(ArcadeTrain)) then return end
 			local pos = ArcadeTrain:GetPos()
 			local ang = ArcadeTrain:GetAngles()
-			local train1=ents.Create(ArcadeTrain:GetClass())
+			local train1 = ents.Create(ArcadeTrain:GetClass())
 			undo.ReplaceEntity(ArcadeTrain, train1)
 			SafeRemoveEntity(ArcadeTrain)
 			train1:SetPos(pos-Vector(0, 0, 120))
@@ -82,6 +80,7 @@ function TOOL:LeftClick(trace)
 			train1:Spawn()
 		end, ArcadeTrain)
 		undo.SetPlayer(ply)
-		undo.Finish()-- end)
+		undo.Finish() 
+		--end)
 	end
 end
