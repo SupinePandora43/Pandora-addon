@@ -1,6 +1,7 @@
 # Pandora's-addon
 addon for gmod by SupinePandora43
-maded by SupinePandora43/сделано SupinePandora43(Андрей)#
+maded by SupinePandora43/сделано SupinePandora43(Андрей)
+#
 site: [Spandra's Site](https://sites.google.com/view/spandora)
 ### Contains:
 * [simfphys] LW Trailers Pack
