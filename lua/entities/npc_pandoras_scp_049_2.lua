@@ -78,7 +78,7 @@ if SERVER then
 				path:Compute(self, self:GetEnemy():GetPos())
 			end
 			path:Update( self )
-			if(spandora.debug) then path:Draw() end
+			if(spandora.cvars.debug) then path:Draw() end
 			if (self.loco:IsStuck()) then
 				self:HandleStuck()
 				return "stuck"
