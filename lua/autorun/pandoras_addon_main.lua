@@ -20,6 +20,7 @@ if spandora.version then
 else
 	spandora.version = version
 end
+
 function spandora.scp:IsEnemy(self, ent)
 	if (ent == self or ent:GetClass() == self:GetClass() or table.HasValue(spandora.scp.classes, ent:GetClass())) then
 		return false
