@@ -7,6 +7,7 @@ spandora.scp.Enemy = spandora.scp.Enemy or {}
 spandora.scp.Category = "SupinePandora's SCP's"
 spandora.scp.TouchRadius = 40
 spandora.lang = {}
+
 local version = 1.0
 if spandora.version then
 	if version == spandora.version then
