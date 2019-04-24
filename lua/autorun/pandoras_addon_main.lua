@@ -7,7 +7,6 @@ spandora.scp.Enemy = spandora.scp.Enemy or {}
 spandora.scp.Category = "SupinePandora's SCP's"
 spandora.scp.TouchRadius = 40
 spandora.lang = {}
-
 local version = 1.0
 if spandora.version then
 	if version == spandora.version then
@@ -20,7 +19,6 @@ if spandora.version then
 else
 	spandora.version = version
 end
-
 function spandora.scp:IsEnemy(self, ent)
 	if (ent == self or ent:GetClass() == self:GetClass() or table.HasValue(spandora.scp.classes, ent:GetClass())) then
 		return false
@@ -96,7 +94,7 @@ if SERVER then
 		end
 	)
 end
----DMG_PREVENT_PHYSICS_FORCE for 173
+---DMG_PREVENT_PHYSICS_FORCE 173
 concommand.Add(
 	"spandora_blacklist_clear",
 	function(ply, cmd, args)
