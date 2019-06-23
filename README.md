@@ -9,6 +9,7 @@
 [![GitHub All Releases](https://img.shields.io/github/downloads/SupinePandora43/Pandora-addon/total.svg)](https://github.com/SupinePandora43/Pandora-addon/releases "Release downloads")
 [![GitHub repo size](https://img.shields.io/github/repo-size/SupinePandora43/Pandora-addon.svg)](https://github.com/SupinePandora43/Pandora-addon "Pandora-addon")
 [![GitHub](https://img.shields.io/github/license/SupinePandora43/Pandora-addon.svg)](https://github.com/SupinePandora43/Pandora-addon/blob/master/LICENSE "LICENSE")
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FSupinePandora43%2FPandora-addon.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2FSupinePandora43%2FPandora-addon?ref=badge_shield)
 #
 addon for gmod by SupinePandora43
 maded by SupinePandora43/сделано SupinePandora43(Андрей)
@@ -23,3 +24,6 @@ site: [Spandra's Site](https://sites.google.com/view/spandora/pandora-addon)
 * Arcade'r Tool (normal trains to arcade)
 
 # DO NOT UPLOAD TO WORKSHOP
+
+## License
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FSupinePandora43%2FPandora-addon.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2FSupinePandora43%2FPandora-addon?ref=badge_large)
