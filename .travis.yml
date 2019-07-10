@@ -1,5 +1,7 @@
 language: shell
-script:
+install:
 - wget -O glualint.zip https://github.com/FPtje/GLuaFixer/releases/download/1.11.1/glualint-1.11.1-linux.zip
 - unzip glualint.zip
+
+script:
 - ./glualint
