@@ -13,6 +13,10 @@
 #
 addon for gmod by SupinePandora43
 maded by SupinePandora43/сделано SupinePandora43(Андрей)
+
+it's old code, i'm working on seperating it to own addons.
+* [Trolley's code](https://github.com/SupinePandora43/Pandora-addon/blob/master/lua/autorun/simf_tdm_trailers_missing_pack_sp43.lua) migrated to [Trailers base REBORN](https://github.com/SupinePandora43/Trailers-Reborn)
+* [unused lw trailers]() to [LW Trailers Pack](https://github.com/SupinePandora43/GMOD_ADDONS/tree/simfphys_lw_trailers_pack)
 #
 site: [Spandra's Site](https://sites.google.com/view/spandora/pandora-addon)
 ### Contains:
